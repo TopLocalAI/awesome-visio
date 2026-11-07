@@ -21,4 +21,4 @@ Open a PR or an issue if a link is broken, a project is abandoned, or a descript
 
 ## Disclosure
 
-If you are affiliated with the tool you are adding, say so in the PR description. The maintainers (TopLocalAI) list their own products only in the clearly labeled "Featured" section.
+If you are affiliated with the tool you are adding, say so in the PR description.

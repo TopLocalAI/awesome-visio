@@ -12,7 +12,7 @@ Legend: 💲 commercial or paid product · 🆓 free / open source where not obv
 
 ## Contents
 
-- [Featured: tools by the maintainers](#featured-tools-by-the-maintainers)
+- [Featured tools](#featured-tools)
   - [Comparison](#comparison)
   - [VSDX.ai](#vsdxai)
   - [LayerBack](#layerback)
@@ -38,9 +38,7 @@ Legend: 💲 commercial or paid product · 🆓 free / open source where not obv
 
 ---
 
-## Featured: tools by the maintainers
-
-> **Disclosure:** this list is maintained by [TopLocalAI](https://github.com/TopLocalAI), the team behind the three tools in this section. Everything below this section is a neutral community list, and we welcome PRs that add competing tools.
+## Featured tools
 
 All three tools produce **real Visio content**: native shapes, connectors glued to those shapes, and editable text. They do not wrap a flat picture in a `.vsdx` container. You do not need a Visio license to create or view files with them.
 
@@ -278,4 +276,4 @@ Contributions are welcome. Read the [contribution guidelines](CONTRIBUTING.md) f
 
 To the extent possible under law, the contributors have waived all copyright and related rights to this list. See [LICENSE](LICENSE).
 
-*Microsoft, Visio and Microsoft 365 are trademarks of the Microsoft group of companies. This list is not affiliated with, endorsed by or sponsored by Microsoft. VSDX.ai, LayerBack and vsdx.app are independent products made by TopLocalAI and are not made by Microsoft. All other product names are trademarks of their respective owners.*
+*Microsoft, Visio and Microsoft 365 are trademarks of the Microsoft group of companies. This list is not affiliated with, endorsed by or sponsored by Microsoft. VSDX.ai, LayerBack and vsdx.app are independent products and are not made by Microsoft. All other product names are trademarks of their respective owners.*
