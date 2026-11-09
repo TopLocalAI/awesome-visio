@@ -4,276 +4,259 @@
 
 **English** | [简体中文](README.zh-CN.md)
 
-Microsoft Visio is the long-standing standard for business and technical diagrams: flowcharts, swimlanes, network and architecture diagrams, org charts and floor plans. Since Visio 2013 the default file format is **`.vsdx`**, an [Open Packaging Convention](https://ecma-international.org/publications-and-standards/standards/ecma-376/) ZIP archive of XML parts (pages, masters, ShapeSheet cells, themes). Related extensions are `.vssx` (stencil), `.vstx` (template) and the macro-enabled `.vsdm`. Older versions used the binary **`.vsd`** format and the Visio 2003–2010 XML format **`.vdx`**.
+Microsoft Visio is the long-standing standard for business and technical diagrams: flowcharts, swimlanes, network and architecture diagrams, org charts and floor plans. Since Visio 2013 the default file format is **`.vsdx`**, an Open Packaging Conventions ZIP archive of XML parts (pages, masters, ShapeSheet cells, themes). Related extensions are `.vssx` (stencil), `.vstx` (template) and the macro-enabled `.vsdm`. Older versions used the binary **`.vsd`** format and the Visio 2003–2010 XML format **`.vdx`**.
 
-Because `.vsdx` is plain XML in a ZIP, you can read, generate and convert Visio files without Visio itself. This list collects the tools that make that practical.
+Because `.vsdx` is plain XML in a ZIP, you can read, generate and convert Visio files without Visio itself. This list collects the tools, specs and shapes that make that practical.
 
-Legend: 💲 commercial or paid product · 🆓 free / open source where not obvious
+Maintained by the team behind VSDX.ai and LayerBack. Our own tools are marked ⭐ and listed alongside the alternatives, with the same format and criteria as every other entry.
+
+Legend: 💲 paid or commercial (may have a free tier) · ⭐ made by the maintainers of this list
 
 ## Contents
 
-- [Featured tools](#featured-tools)
-  - [Comparison](#comparison)
-  - [VSDX.ai](#vsdxai)
-  - [LayerBack](#layerback)
-  - [vsdx.app](#vsdxapp)
 - [Official Microsoft resources](#official-microsoft-resources)
   - [Product and documentation](#product-and-documentation)
   - [File format](#file-format)
   - [Programming and automation](#programming-and-automation)
 - [Libraries](#libraries)
   - [Python](#python)
-  - [.NET / PowerShell](#net--powershell)
+  - [.NET and PowerShell](#net-and-powershell)
   - [Java](#java)
-  - [JavaScript / TypeScript](#javascript--typescript)
-  - [C++ / Rust / Go](#c--rust--go)
+  - [JavaScript and TypeScript](#javascript-and-typescript)
+  - [C, C++, Rust, Go and PHP](#c-c-rust-go-and-php)
 - [Converters](#converters)
+  - [Desktop and command line](#desktop-and-command-line)
+  - [Online converters](#online-converters)
 - [Viewers and editors](#viewers-and-editors)
-- [Stencils and shape libraries](#stencils-and-shape-libraries)
+- [Stencils, templates and icons](#stencils-templates-and-icons)
+  - [Official vendor stencils](#official-vendor-stencils)
+  - [Community stencils](#community-stencils)
+  - [Icon sets without Visio stencils](#icon-sets-without-visio-stencils)
+  - [Stencil tools](#stencil-tools)
 - [Diagram-as-code to Visio](#diagram-as-code-to-visio)
-- [AI tools for diagrams](#ai-tools-for-diagrams)
-- [Blogs, tutorials and community](#blogs-tutorials-and-community)
+- [AI tools that output Visio](#ai-tools-that-output-visio)
+- [Add-ins and developer tools](#add-ins-and-developer-tools)
+- [Integrations](#integrations)
+- [Books, blogs and community](#books-blogs-and-community)
 - [Related lists](#related-lists)
-- [Contributing](#contributing)
-
----
-
-## Featured tools
-
-All three tools produce **real Visio content**: native shapes, connectors glued to those shapes, and editable text. They do not wrap a flat picture in a `.vsdx` container. You do not need a Visio license to create or view files with them.
-
-### Comparison
-
-| | [VSDX.ai](https://vsdx.ai) | [LayerBack](https://layerback.com) | [vsdx.app](https://vsdx.app) |
-|---|---|---|---|
-| **Start from** | Text, documents, spreadsheets, data, Mermaid/PlantUML code | A picture or PDF of an existing diagram | An existing `.vsdx` / `.vsd` file |
-| **What you get** | A new native Visio diagram, plus format conversions | The same diagram rebuilt as an editable file | Open, edit and save Visio files natively on Mac |
-| **Output formats** | `.vsdx`, `.drawio`, PNG, SVG | VSDX, PPTX, draw.io XML, SVG | `.vsdx`, `.vsd` (opens both) |
-| **Runs in** | Browser (web app) | Browser (web app) | macOS app (Swift/AppKit) |
-| **Free option** | Free browser tools (Visio→draw.io, Visio→PNG/SVG); 20 welcome credits | Convert and preview free without sign-in; free online VSDX viewer | Open, view, print and Quick Look any `.vsdx`/`.vsd` |
-| **Paid from** | Pro $20/mo | Pro $20/mo | Pro or Lifetime license |
-| **Agent / developer access** | REST API, OpenAPI spec, remote MCP server | REST API, open-source MCP server and Agent Skill | — |
-| **Languages** | 7 (EN, ZH, DE, FR, ES, JA, KO) | 7, recognizes CJK and other non-Latin text | — |
-
-**Which one?** Use LayerBack when you have a *picture* of a diagram and want it editable. Use VSDX.ai when you have *content* (text, documents, data or diagram code) and want a new Visio diagram, or when an AI agent needs to produce `.vsdx` files. Use vsdx.app when you need to *open and edit Visio files on a Mac*.
-
-### VSDX.ai
-
-**[VSDX.ai](https://vsdx.ai)** is an AI Visio diagram generator. It turns text, documents and data into native `.vsdx` files.
-
-- **Many input types.** Reads spreadsheets (Excel, CSV), PDF, Word, plain text, Markdown, JSON, YAML, images, audio and short video. You can combine several sources in one project, and they are stored privately.
-- **Real Visio output.** It turns meaning into a structured diagram and exports a native `.vsdx` with editable shapes and glued connectors, not a flat image or a PNG renamed to `.vsdx`. Files are verified to open in Microsoft Visio on Windows. It also exports `.drawio`, and you can import existing `.vsdx` / `.drawio` files back.
-- **Diagram types.** Flowchart, swimlane, BPMN, org chart, architecture, network, ER and UML.
-- **Edit after generation.** Every diagram opens in an embedded draw.io editor. You can also edit by chatting, and saved versions can be restored.
-- **Clean layouts.** An automatic layout engine based on ELK. The *Tidy up a diagram* tool re-lays out messy draw.io or Visio diagrams.
-- **Conversion tools** ([all tools](https://vsdx.ai/tools)): image → Visio, Excel → org chart, outline → org chart, [Mermaid → Visio](https://vsdx.ai/tools/mermaid-to-visio), PlantUML → Visio, draw.io → Visio, [Visio → draw.io](https://vsdx.ai/tools/visio-to-drawio), Visio → PNG/SVG and tidy diagram. Also see [Excel → org chart](https://vsdx.ai/tools/excel-to-org-chart).
-- **Free, no account, runs entirely in your browser:** Visio → draw.io and Visio → PNG/SVG, for modern `.vsdx` files (legacy `.vsd` is not supported).
-- **For developers and agents.** Public REST API with an [OpenAPI spec](https://vsdx.ai/api/v1/openapi.json) ([developer page](https://vsdx.ai/developers), [docs](https://vsdx.ai/docs)). A remote MCP server at `https://vsdx.ai/api/mcp` provides `generate_diagram`, `convert_diagram` and `get_credits`. [Setup guides](https://vsdx.ai/mcp) cover Claude Code, Cursor and Codex, and OAuth is supported for ChatGPT and Claude on the web. PNG, SVG and draw.io output work on every account. `.vsdx` output via API/MCP needs a paid plan or a credit pack.
-- **Interface languages:** English, Chinese, German, French, Spanish, Japanese and Korean.
-
-**Pricing** ([details](https://vsdx.ai/pricing)): each generation or edit costs 10 credits, and each tool run costs 10 credits (the free tools cost nothing). New accounts get 20 welcome credits.
-
-| Plan | Monthly | Yearly | Credits / month |
-|---|---|---|---|
-| Free | $0 | — | 20 welcome credits |
-| Pro | $20 | $120 | 300 |
-| Business | $50 | $300 | 1,000 |
-| Team | $100 | $600 | 3,000 |
-
-Top-ups: 300 credits for $20, 1,000 for $50 or 3,000 for $100, each valid for 90 days.
-
-### LayerBack
-
-**[LayerBack](https://layerback.com)** turns a diagram image or PDF into editable Visio, PowerPoint, draw.io or SVG files.
-
-- **Rebuilds the diagram instead of tracing it.** Converts screenshots, PNG, JPG, WebP and PDF pages into fully editable files. Vector tracers produce outlines, and some tools just embed the picture in a file container. LayerBack makes every box a native shape, every arrow a live connector glued to its shapes, and every label real editable text. Output is verified in Visio and PowerPoint.
-- **Four formats per diagram.** About 30 seconds per conversion. Converting and previewing are free with no sign-in. The first download or edit of a diagram uses 10 credits and unlocks all four formats: VSDX, PPTX, draw.io XML and SVG. Failed conversions are never charged.
-- **Built-in online editor** to fix anything and re-export.
-- **Privacy.** Uploads are deleted automatically after 72 hours.
-- **Multilingual.** Recognizes non-Latin text such as Chinese and Japanese. The interface is available in 7 languages.
-- **Free [online VSDX viewer](https://layerback.com/vsdx-viewer).** Open `.vsdx` files in the browser without Visio.
-- **Landing pages:** [Image to Visio](https://layerback.com/image-to-visio) · [PDF to Visio](https://layerback.com/pdf-to-visio) · [Image to PPTX](https://layerback.com/image-to-pptx) · [Image to draw.io](https://layerback.com/image-to-drawio) · [All tools](https://layerback.com/tools)
-- **For developers and agents:**
-  - [Public API](https://layerback.com/docs/api) (authenticated with an `x-api-key` header).
-  - [layerback-mcp](https://github.com/TopLocalAI/layerback-mcp): open-source MCP server with `convert_diagram_image`, `get_conversion_status` and `download_converted_diagram`. Works in Claude Desktop, Claude Code and Cursor.
-  - [layerback-image-to-vsdx-skill](https://github.com/TopLocalAI/layerback-image-to-vsdx-skill): open-source Agent Skill. Install with:
-
-    ```sh
-    npx -y skills@latest add TopLocalAI/layerback-image-to-vsdx-skill --skill layerback-image-to-vsdx --agent codex --global
-    ```
-
-**Pricing** ([details](https://layerback.com/pricing)): Pro $20/mo (1,000 credits), Plus $40/mo (3,000 credits), Max $80/mo (10,000 credits). Credit packs start at $10 and never expire.
-
-### vsdx.app
-
-**[vsdx.app](https://vsdx.app)** is an independent native macOS app that opens, edits and saves Visio `.vsdx` and `.vsd` files.
-
-- **Native Mac app.** Built with Swift and AppKit, not a web wrapper. It has a familiar ribbon interface.
-- **File fidelity.** When it writes a file back, it preserves the original XML.
-- **Finder integration.** Quick Look previews and thumbnails for Visio files.
-- **Works offline** after you sign in once. Sign-in happens in the browser, and the app stores no passwords or API keys.
-- **AI drafting.** Describe a diagram in one sentence and get a first draft (powered by VSDX.ai).
-- **Free:** open, view and print any `.vsdx` or `.vsd`, and preview them in Finder. Editing, saving and AI need **Pro** or **Lifetime**. Lifetime is a forever license that includes 100 AI credits per month, and credit packs are available.
-
----
 
 ## Official Microsoft resources
 
 ### Product and documentation
 
-- [Microsoft Visio](https://www.microsoft.com/en-us/microsoft-365/visio) - Product home: Visio Plan 1, Plan 2 and the desktop app. 💲
-- [Visio in Microsoft 365](https://www.microsoft.com/en-us/microsoft-365/visio/visio-in-microsoft-365) - The lightweight web version of Visio included with many Microsoft 365 subscriptions.
+- [Microsoft Visio](https://www.microsoft.com/en-us/microsoft-365/visio) - Product home for Visio Plan 1, Plan 2 and the desktop app. 💲
+- [Visio in Microsoft 365](https://www.microsoft.com/en-us/microsoft-365/visio/visio-in-microsoft-365) - Lightweight web version of Visio included with many Microsoft 365 subscriptions.
 - [Visio support](https://support.microsoft.com/en-us/visio) - Official help, how-to articles and training.
 - [Create a Data Visualizer diagram](https://support.microsoft.com/en-us/office/create-a-data-visualizer-diagram-17211b46-d144-4ca2-9ea7-b0f48f0ae0a6) - Generate flowcharts, org charts and swimlanes from Excel tables in Visio.
-- [Visio Viewer (legacy)](https://www.microsoft.com/en-us/download/details.aspx?id=35811) - Free viewer for Visio drawings. Old, Internet Explorer-based, and unlikely to work well on current Windows. ([background](https://learn.microsoft.com/en-us/archive/blogs/office_resource_kit/download-the-new-microsoft-visio-viewer))
+- [Create Azure diagrams in Visio](https://support.microsoft.com/office/efbb25e7-c80e-42e1-b1ad-7ef630ff01b7) - The built-in Azure Diagrams template with more than twenty stencils.
+- [Microsoft Visio 2013 Viewer](https://www.microsoft.com/en-us/download/details.aspx?id=35811) - Free ActiveX viewer for `.vsdx`, `.vsd` and `.vdx` that runs inside Internet Explorer, so it is of limited use on current Windows.
 
 ### File format
 
 - [Introduction to the Visio file format (.vsdx)](https://learn.microsoft.com/en-us/office/client-developer/visio/introduction-to-the-visio-file-formatvsdx) - Package structure, parts and relationships.
-- [Manipulate the Visio file format programmatically](https://learn.microsoft.com/en-us/office/client-developer/visio/how-to-manipulate-the-visio-file-format-programmatically) - Step-by-step walkthrough of reading and editing a `.vsdx` package with System.IO.Packaging.
+- [Manipulate the Visio file format programmatically](https://learn.microsoft.com/en-us/office/client-developer/visio/how-to-manipulate-the-visio-file-format-programmatically) - Walkthrough of reading and editing a `.vsdx` package with System.IO.Packaging.
 - [Visio file format reference](https://learn.microsoft.com/en-us/office/client-developer/visio/visio-file-format-reference) - Reference for the XML elements in a `.vsdx` package.
-- [[MS-VSDX]: Visio Graphics Service VSDX File Format](https://learn.microsoft.com/en-us/openspecs/sharepoint_protocols/ms-vsdx/50c23601-c943-4ff2-b4a1-02445f52daf0) - The formal open specification of the `.vsdx` format.
-- [Visio ShapeSheet reference](https://learn.microsoft.com/en-us/office/client-developer/visio/visio-shapesheet-reference) - Cells, functions, rows and sections. These map directly onto the XML inside `.vsdx`.
+- [Schema map (Visio XML)](https://learn.microsoft.com/en-us/office/client-developer/visio/schema-mapvisio-xml) - The XSD schema definition of the Visio 2013 file format.
+- [MS-VSDX: Visio Graphics Service VSDX File Format](https://learn.microsoft.com/en-us/openspecs/sharepoint_protocols/ms-vsdx/50c23601-c943-4ff2-b4a1-02445f52daf0) - Formal open specification of the `.vsdx` format.
+- [Visio ShapeSheet reference](https://learn.microsoft.com/en-us/office/client-developer/visio/visio-shapesheet-reference) - Cells, functions, rows and sections, which map directly onto the XML inside `.vsdx`.
+- [Open the ShapeSheet](https://learn.microsoft.com/en-us/office/client-developer/visio/open-the-shapesheet-for-a-shape-page-or-document) - Starting point for learning the ShapeSheet, the formula engine behind every Visio shape.
 - [ECMA-376 (Office Open XML)](https://ecma-international.org/publications-and-standards/standards/ecma-376/) - The Open Packaging Conventions standard that `.vsdx` is built on.
 
 ### Programming and automation
 
+- [Visio developer documentation](https://learn.microsoft.com/en-us/office/client-developer/visio/visio-home) - Hub for Visio client development, file format and ShapeSheet docs.
 - [Visio JavaScript API overview](https://learn.microsoft.com/en-us/office/dev/add-ins/visio/visio-overview) - Office Add-ins API for Visio diagrams embedded in SharePoint Online.
 - [Visio JavaScript API reference](https://learn.microsoft.com/en-us/javascript/api/visio) - Full reference for the `Visio` namespace.
 - [Office Add-ins platform](https://learn.microsoft.com/en-us/office/dev/add-ins/overview/office-add-ins) - General documentation for building web-based Office add-ins.
 - [Office Add-in samples](https://github.com/OfficeDev/Office-Add-in-samples) - Official code samples for the Office Add-ins platform.
-- [Visio VBA reference](https://learn.microsoft.com/en-us/office/vba/api/overview/visio) - The Visio object model for VBA and COM automation.
-- [Visio Application object](https://learn.microsoft.com/en-us/office/vba/api/visio.application) - Entry point of the COM object model, used by VBA, C#, PowerShell and Python (pywin32).
+- [Visio VBA reference](https://learn.microsoft.com/en-us/office/vba/api/overview/visio) - The Visio object model for VBA and COM automation. Needs desktop Visio.
+- [Visio Application object](https://learn.microsoft.com/en-us/office/vba/api/visio.application) - Entry point of the COM object model used by VBA, C#, PowerShell and Python.
 - [Visio solutions in Visual Studio (VSTO)](https://learn.microsoft.com/en-us/visualstudio/vsto/visio-solutions) - Build VSTO add-ins for desktop Visio.
-- [Open XML SDK](https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk) - Microsoft's .NET SDK for Office Open XML packages. Handy for low-level work on the `.vsdx` package (parts, relationships, XML). ([GitHub](https://github.com/dotnet/Open-XML-SDK), [NuGet](https://www.nuget.org/packages/DocumentFormat.OpenXml))
+- [Visio 2013 SDK](https://www.microsoft.com/en-us/download/details.aspx?id=36825) - Documentation, samples, headers and tools such as Event Monitor for Visio 2013 solutions.
+- [Open XML SDK](https://github.com/dotnet/Open-XML-SDK) - Microsoft's .NET SDK for Office Open XML packages, handy for low-level part and relationship work on `.vsdx`.
 
 ## Libraries
 
 ### Python
 
-- [vsdx](https://github.com/dave-howard/vsdx) - Read and edit `.vsdx` files (shapes, text, connectors) and generate new files from Jinja templates. Works without Visio. ([PyPI](https://pypi.org/project/vsdx/), [docs](https://vsdx.readthedocs.io/))
-- [libvisio-ng](https://github.com/yeager/libvisio-ng) - Parse `.vsdx` and `.vsd` files and convert them to SVG. Extracted from the vsdview viewer. ([PyPI](https://pypi.org/project/libvisio-ng/))
-- [pywin32](https://github.com/mhammond/pywin32) - Python for Windows extensions. The usual way to drive desktop Visio through COM from Python. Requires Windows and Visio.
-- [Aspose.Diagram for Python via .NET](https://products.aspose.com/diagram/python-net/) - Create, edit and convert Visio formats. 💲 ([PyPI](https://pypi.org/project/aspose-diagram-python/))
+- [vsdx](https://github.com/dave-howard/vsdx) - Read and edit `.vsdx` shapes, text and connectors, and generate files from Jinja templates. Works without Visio.
+- [libvisio-ng](https://github.com/yeager/libvisio-ng) - Parse `.vsdx` and `.vsd` files and convert them to SVG. Extracted from the vsdview viewer.
+- [pywin32](https://github.com/mhammond/pywin32) - Python for Windows extensions, the usual way to drive desktop Visio through COM. Needs Windows and Visio.
+- [visioplot](https://github.com/jchliao/visioplot) - Export Matplotlib figures as Office-friendly SVG and convert them to `.vsdx`. VSDX export needs Windows and Visio (Chinese docs).
+- [Aspose.Diagram for Python via .NET](https://products.aspose.com/diagram/python-net/) - Create, edit and convert Visio formats without Visio. 💲
 
-### .NET / PowerShell
+### .NET and PowerShell
 
 - [VisioAutomation](https://github.com/saveenr/VisioAutomation) - Long-running .NET libraries and PowerShell cmdlets for automating desktop Visio.
-- [VisioBot3000](https://github.com/MikeShepard/VisioBot3000) - PowerShell DSL for building Visio diagrams through automation.
-- [Aspose.Diagram for .NET](https://products.aspose.com/diagram/net/) - Read, write, render and convert VSD, VSDX, VDX and related formats without Visio. 💲 ([NuGet](https://www.nuget.org/packages/Aspose.Diagram))
+- [VisioBot3000](https://github.com/MikeShepard/VisioBot3000) - PowerShell DSL for building Visio diagrams through automation. Needs Visio.
+- [NetOffice](https://github.com/netoffice/NetOffice) - Version-independent .NET wrappers for Office automation, including Visio. Unmaintained since 2020.
+- [Aspose.Diagram for .NET](https://products.aspose.com/diagram/net/) - Read, write, render and convert VSD, VSDX, VDX and related formats without Visio. 💲
 
 ### Java
 
-- [Apache POI – XDGF](https://poi.apache.org/components/diagram/) - Apache POI's component for `.vsdx` (XDGF) and legacy `.vsd` (HDGF). Read-focused. ([API docs](https://poi.apache.org/apidocs/dev/org/apache/poi/xdgf/usermodel/package-summary.html), [GitHub mirror](https://github.com/apache/poi))
-- [Aspose.Diagram for Java](https://products.aspose.com/diagram/java/) - Commercial Java API for Visio files. 💲
+- [Apache POI](https://poi.apache.org/components/diagram/) - XDGF component for `.vsdx` and HDGF for legacy `.vsd`. Read-focused.
+- [Aspose.Diagram for Java](https://products.aspose.com/diagram/java/) - Java API to create, edit and convert Visio files. 💲
 
-### JavaScript / TypeScript
+### JavaScript and TypeScript
 
-- [ooxml (visio-core and viewers)](https://github.com/ChristopherVR/ooxml) - Local-first OOXML engine with Visio document APIs and drop-in viewers for React, Vue, Angular, Svelte, Solid and vanilla JS. ([demo/docs](https://christophervr.github.io/ooxml/))
+- [ooxml](https://github.com/ChristopherVR/ooxml) - Local-first OOXML engine with Visio document APIs and drop-in viewers for React, Vue, Angular, Svelte, Solid and vanilla JS.
 - [ts-visio](https://github.com/zimmermanw84/ts-visio) - Create `.vsdx` files from TypeScript.
 - [vsdx-js](https://github.com/jgreywolf/vsdx-js) - Parse a `.vsdx` file into a JavaScript object.
-- [cytoscape-vsdx](https://github.com/ShanteshSindgi/cytoscape-vsdx) - Export Cytoscape.js graphs (nodes, edges, groups, styles) to `.vsdx` in the browser.
-- [Aspose.Diagram for Node.js via Java](https://products.aspose.com/diagram/nodejs-java/) - Commercial Node.js API for Visio files. 💲
+- [cytoscape-vsdx](https://github.com/ShanteshSindgi/cytoscape-vsdx) - Export Cytoscape.js graphs with nodes, edges, groups and styles to `.vsdx` in the browser.
+- [JointJS+ Visio plugin](https://docs.jointjs.com/learn/features/export-import/visio) - Import `.vsdx` into JointJS diagrams and export a JointJS paper as `.vsdx`. 💲
+- [Syncfusion Diagram Visio import and export](https://ej2.syncfusion.com/documentation/diagram/visio) - Experimental VSDX import and export for the Syncfusion diagram component. 💲
+- [Aspose.Diagram for Node.js via Java](https://products.aspose.com/diagram/nodejs-java/) - Node.js API for Visio files. 💲
 
-### C++ / Rust / Go
+### C, C++, Rust, Go and PHP
 
-- [libvisio](https://github.com/LibreOffice/libvisio) - The LibreOffice/Document Liberation Project C++ library that imports `.vsd`, `.vdx` and `.vsdx`. It powers Visio import in LibreOffice and Inkscape. ([project page](https://wiki.documentfoundation.org/DLP/Libraries/libvisio))
-- [MisterDiagram](https://github.com/MisterDiagram/MisterDiagram) - Clean-room, headless Rust implementation of `.vsdx` and the ShapeSheet. Reads and writes drawings, stencils and templates, renders to PNG/SVG/PDF, and ships a CLI and an MCP server. Beta.
-- [libvisio-rs](https://github.com/yeager/libvisio-rs) - Rust library for parsing `.vsdx` / `.vsd` and converting to SVG.
+- [libvisio](https://github.com/LibreOffice/libvisio) - The Document Liberation Project C++ library that imports `.vsd`, `.vdx` and `.vsdx`, used by LibreOffice and Inkscape.
+- [MisterDiagram](https://github.com/MisterDiagram/MisterDiagram) - Clean-room Rust core for `.vsdx` and the ShapeSheet that reads, writes and renders drawings, with a CLI and an MCP server. Beta.
+- [libvisio-rs](https://github.com/yeager/libvisio-rs) - Rust library for parsing `.vsdx` and `.vsd` and converting to SVG.
 - [vsdx-go](https://github.com/wijnberg-net/vsdx-go) - Go library for reading, editing and writing `.vsdx` files.
+- [PhpDiagram](https://github.com/PHPOffice/PhpDiagram) - Pure PHP library from PHPOffice for reading and writing diagram files. Unmaintained since 2019.
 
 ## Converters
 
-- [draw.io import formats](https://www.drawio.com/docs/manual/import/import-formats/) - draw.io imports `.vsdx`, `.vsd`, `.vssx` stencils and more, and exports to VSDX (*File > Export as > VSDX*, labeled beta). ([VSDX import notes](https://drawio-app.com/blog/import-vsdx-files/))
-- [LibreOffice Draw](https://www.libreoffice.org/) - Opens `.vsd`, `.vdx` and `.vsdx` through libvisio. It can export to PDF, SVG and ODG, but cannot save back to Visio formats. ([import/export limitations](https://help.libreoffice.org/latest/en-US/text/shared/guide/ms_import_export_limitations.html))
-- [Inkscape](https://inkscape.org/) - Vector editor that imports Visio files through libvisio and can export them to SVG/PDF. ([source](https://gitlab.com/inkscape/inkscape))
-- [weasyvsdx](https://github.com/grigoriev/weasyvsdx) - WeasyPrint plugin that renders VSDX/VSD drawings as vector SVG (via libvisio) in HTML-to-PDF output.
-- [visio2img](https://github.com/visio2img/visio2img) - Python CLI that exports `.vsd` / `.vsdx` pages to images. Requires Windows, pywin32 and Visio. Inactive.
+### Desktop and command line
+
+- [LibreOffice headless conversion](https://help.libreoffice.org/latest/en-US/text/shared/guide/start_parameters.html) - `soffice --headless --convert-to pdf` turns `.vsd` and `.vsdx` into PDF, SVG or PNG on any OS without Visio.
+- [libvisio2svg](https://github.com/kakwa/libvisio2svg) - Library and CLI tools that convert Visio drawings and stencils (VSD, VSS) to SVG, including embedded EMF shapes.
+- [weasyvsdx](https://github.com/grigoriev/weasyvsdx) - WeasyPrint plugin that renders VSDX and VSD drawings as vector SVG in HTML-to-PDF output.
+- [bpmn-to-visio](https://github.com/Mgabr90/bpmn-to-visio) - Convert BPMN 2.0 XML into `.vsdx` with pure Python and no dependencies.
+- [svg2vsdx_gui](https://github.com/kinglonh/svg2vsdx_gui) - Windows GUI that converts SVG files to `.vsdx` (Chinese docs). Inactive.
+- [Visio-Export-Pages-To-Docs](https://github.com/saveenr/Visio-Export-Pages-To-Docs) - CLI that splits a multi-page Visio document into one file per page. Needs Visio.
 - [VSDtoVSDX-Converter](https://github.com/jprtf/VSDtoVSDX-Converter) - PowerShell GUI that batch-converts legacy `.vsd` files to `.vsdx` through Visio.
-- [bpmn-to-visio](https://github.com/Mgabr90/bpmn-to-visio) - Converts BPMN 2.0 XML into `.vsdx`. Pure Python with no dependencies.
-- [GroupDocs Viewer – VSDX](https://products.groupdocs.app/viewer/vsdx) - Free online VSDX viewer and renderer from GroupDocs.
+- [visio2img](https://github.com/visio2img/visio2img) - Python CLI that exports `.vsd` and `.vsdx` pages to images through Visio. Unmaintained since 2018.
+
+### Online converters
+
+- [VSDX.ai free tools](https://vsdx.ai/tools?utm_source=awesome-visio) - ⭐ Free in-browser Visio to draw.io and Visio to PNG/SVG for `.vsdx`, no account, plus paid Mermaid, PlantUML and Excel to Visio tools.
+- [draw.io import formats](https://www.drawio.com/docs/manual/import/import-formats/) - draw.io imports `.vsdx`, `.vsd` and `.vssx` stencils, and exports VSDX (labeled beta).
+- [SVG to Visio](https://mcmarius11.github.io/svgtovisio/) - Client-side converter from SVG or draw.io files to `.vsdx` with glued connectors, `.drawio` and `.fodg`. ([source](https://github.com/McMarius11/svgtovisio))
+- [Aspose Visio Converter](https://products.aspose.app/diagram/conversion) - Free web app that converts Visio files to PDF, images, HTML, SVG, PPTX, DRAWIO and more.
+- [GroupDocs Viewer for VSDX](https://products.groupdocs.app/viewer/vsdx) - Free online VSDX viewer and renderer.
+- [AnyConv](https://anyconv.com/vsdx-converter/) - Free online VSDX converter to PDF and image formats.
 - [Convertio](https://convertio.co/vsdx-converter/) - General online converter for VSDX to PDF and image formats. Free tier with limits.
 - [Zamzar](https://www.zamzar.com/convert/vsdx-to-pdf/) - Online VSDX to PDF conversion. Free tier with limits.
 
 ## Viewers and editors
 
-- [draw.io / diagrams.net](https://www.drawio.com/) - Free, open-source diagram editor in the browser and on the desktop. Imports and exports Visio files. ([web app](https://app.diagrams.net/), [desktop](https://github.com/jgraph/drawio-desktop), [source](https://github.com/jgraph/drawio))
-- [vsdview](https://github.com/yeager/vsdview) - GTK4/Adwaita viewer for `.vsdx` / `.vsd` on Linux.
+- [vsdx.app](https://vsdx.app?utm_source=awesome-visio) - ⭐ Native macOS app that opens, edits and saves `.vsdx` and `.vsd`, with Finder Quick Look previews. Viewing is free. 💲
+- [LayerBack VSDX Viewer](https://layerback.com/vsdx-viewer?utm_source=awesome-visio) - ⭐ Free online viewer that opens `.vsdx` files in the browser without Visio.
+- [draw.io](https://www.drawio.com/) - Free, open-source diagram editor for web and desktop that imports and exports Visio files. ([desktop](https://github.com/jgraph/drawio-desktop))
+- [LibreOffice Draw](https://www.libreoffice.org/) - Opens `.vsd`, `.vdx` and `.vsdx` through libvisio, but cannot save back to Visio formats. ([limitations](https://help.libreoffice.org/latest/en-US/text/shared/guide/ms_import_export_limitations.html))
+- [Inkscape](https://inkscape.org/) - Vector editor that imports Visio files through libvisio.
+- [vsdview](https://github.com/yeager/vsdview) - GTK4/Adwaita viewer for `.vsdx` and `.vsd` on Linux.
+- [VSD Viewer](https://nektony.com/products/visio-viewer-mac) - Mac viewer for VSD, VDX and VSDX drawings with layers and shape data. Free download with paid Pro version. 💲
+- [Aspose Visio Viewer](https://products.aspose.app/diagram/viewer) - Free web app that renders VSD, VSDX, VDX and stencil files as images.
 - [Lucidchart](https://www.lucidchart.com/) - Web diagramming tool that imports Visio files. 💲 ([import guide](https://help.lucid.co/hc/en-us/articles/16389149809428))
+- [Miro](https://help.miro.com/hc/en-us/articles/11842818558738) - Online whiteboard that imports `.vsdx` diagrams as boards. 💲
 - [SmartDraw](https://www.smartdraw.com/) - Web diagramming tool with Visio import and export. 💲
-- [EdrawMax](https://www.edrawsoft.com/edraw-max/) - Cross-platform diagram editor (Windows, Mac, Linux, web) with Visio import and export. 💲
+- [EdrawMax](https://www.edrawsoft.com/edraw-max/) - Cross-platform diagram editor with Visio import and export. 💲
 - [ConceptDraw DIAGRAM](https://www.conceptdraw.com/) - Mac and Windows diagram editor that opens and saves Visio formats. 💲
-- [OmniGraffle](https://www.omnigroup.com/omnigraffle) - Mac and iPad diagramming app that can import and export Visio files. 💲
-- [Visual Paradigm Online](https://online.visual-paradigm.com/) - Web diagramming suite with Visio import. Free tier available. 💲
-- [yEd](https://www.yworks.com/products/yed) - Free desktop graph editor with strong automatic layout. Useful for laying out graphs before moving them to Visio.
+- [OmniGraffle](https://www.omnigroup.com/omnigraffle) - Mac and iPad diagramming app that imports and exports Visio files. 💲
+- [Visual Paradigm Online](https://online.visual-paradigm.com/) - Web diagramming suite with Visio import and a free tier. 💲
 
-## Stencils and shape libraries
+## Stencils, templates and icons
 
-- [VisioCafe](https://www.visiocafe.com/) - Long-standing free index of official vendor Visio stencils (HPE, Dell, NetApp, IBM, Lenovo, Fujitsu and more).
-- [Cisco network topology icons](https://www.cisco.com/c/en/us/about/brand-center/network-topology-icons.html) - Official Cisco icon and Visio stencil downloads.
-- [Azure architecture icons](https://learn.microsoft.com/en-us/azure/architecture/icons/) - Official Azure icons. Provided as SVG, not Visio stencils, but they drag straight into Visio.
+### Official vendor stencils
+
+- [VisioCafe](https://www.visiocafe.com/) - Long-standing free index of official vendor Visio stencils from HPE, Dell, NetApp, IBM, Lenovo, Fujitsu and others.
+- [Cisco network topology icons](https://www.cisco.com/c/en/us/about/brand-center/network-topology-icons.html) - Official Cisco icons and Visio stencil downloads.
+- [Fortinet icon library](https://www.fortinet.com/resources/icon-library) - Official Fortinet product and cybersecurity icons with Visio stencils.
 - [Microsoft 365 architecture icons and templates](https://learn.microsoft.com/en-us/previous-versions/microsoft-365/solutions/architecture-icons-templates) - Microsoft 365 icon sets and Visio templates (archived page).
-- [Microsoft Integration & Azure Stencils Pack](https://github.com/sandroasp/Microsoft-Integration-and-Azure-Stencils-Pack-for-Visio) - Large community Visio pack for Azure, BizTalk, Power Platform and Microsoft 365.
+- [ShapeSource](https://www.shapesource.com/) - Visimation's library of manufacturer Visio stencils, many free, such as Palo Alto Networks and Juniper. 💲
+- [Paul Herber Software](https://www.paulherber.co.uk/) - Visio shape sets for electrical, electronics, UML, HVAC and more, with some free shapes. 💲
+
+### Community stencils
+
+- [Microsoft Integration and Azure Stencils Pack](https://github.com/sandroasp/Microsoft-Integration-and-Azure-Stencils-Pack-for-Visio) - Large Visio pack for Azure, BizTalk, Power Platform and Microsoft 365.
 - [visioStencils](https://github.com/bhdicaire/visioStencils) - Collection of 4,000+ IT infrastructure shapes, stencils and icons.
-- [Visio-Azure](https://github.com/xeeva/Visio-Azure) - Searchable Azure stencil set (1,259 icons) with connection points and shape data.
-- [Visio-Cisco](https://github.com/xeeva/Visio-Cisco) - Community-built searchable Cisco stencil set with Metric and US builds. Unofficial.
+- [VisioStencils](https://github.com/girlpunk/VisioStencils) - Collection of more than 600 `.vss` and `.vssx` stencil files.
+- [Visio-Azure](https://github.com/xeeva/Visio-Azure) - Searchable Azure stencil set with 1,259 icons, connection points and shape data.
+- [Visio-Cisco](https://github.com/xeeva/Visio-Cisco) - Searchable, unofficial Cisco stencil set with Metric and US builds.
 - [C4 model Visio stencil](https://github.com/pihalve/c4model-visio-stencil) - Shapes for C4 software architecture diagrams.
 - [ntwrk-clean-and-flat](https://github.com/DukeNuke3D/ntwrk-clean-and-flat) - Clean, flat 2D network symbols with Visio stencils.
+- [VMware Visio stencils](https://github.com/uldyssian-sh/vmware-visio-stencils) - More than 100 VMware product icons and templates for infrastructure diagrams.
+- [Microsoft Fabric Visio stencils](https://github.com/PatrickGallucci/fabric-stencils) - Over 90 shapes for Microsoft Fabric architecture diagrams.
 - [Unifi Visio Stencils](https://github.com/brightmethods/Unifi-Visio-Stencils) - Stencils for common Ubiquiti UniFi hardware.
+- [Ubiquiti Visio stencils](https://github.com/digiservnet/ubiquiti-visio-stencils) - Ubiquiti devices with a connection point for every port.
+- [Domotic Visio stencils](https://github.com/rrobinet/Visio-Stencils) - Home automation and electrical stencils.
+- [IEC 61131-3 Visio stencils](https://github.com/avafab/IEC-61131-3-Visio-stencils) - Sequential Function Chart shapes for PLC software design.
+- [DMN Visio stencils](https://github.com/debasishdalui/dmn-visio-stencils) - Decision Model and Notation (DMN 1.0) shapes.
+- [bootstrap-visio-templates](https://github.com/henck/bootstrap-visio-templates) - Configurable stencils for Bootstrap web UI mockups. Inactive.
+- [Shapes-n-stencils](https://github.com/Visio-Resources/Shapes-n-stencils) - Categorized link list of third-party Visio stencils and add-ons.
+
+### Icon sets without Visio stencils
+
+- [Azure architecture icons](https://learn.microsoft.com/en-us/azure/architecture/icons/) - Official Azure icons as SVG. Microsoft has no plans to ship them as Visio stencils, but they drag straight into Visio.
+- [AWS architecture icons](https://aws.amazon.com/architecture/icons/) - Official AWS icon package and PowerPoint toolkit. No Visio stencils.
+- [Google Cloud icons](https://cloud.google.com/icons) - Official Google Cloud product icons as SVG and PNG.
+- [Microsoft Power Platform icons](https://learn.microsoft.com/en-us/power-platform/guidance/icons) - Official Power Platform icons as SVG.
+- [Microsoft Fabric icons](https://learn.microsoft.com/en-us/fabric/fundamentals/icons) - Official Fabric product and item icons as SVG.
+
+### Stencil tools
+
 - [Visio Stencil Factory](https://github.com/rezanid/visiostencilfactory) - Build your own Visio stencils from a folder of SVG files.
-- [ShapeSource](https://www.shapesource.com/) - Vendor Visio shapes produced by Visimation (many manufacturers). Some are paid. 💲
-- [draw.io libraries](https://github.com/jgraph/drawio-libs) - Community shape libraries for draw.io. Combined with draw.io's VSDX export, they are a route to Visio.
+- [visio-stencil-creator](https://github.com/hoveytechllc/visio-stencil-creator) - Create a `.vssx` stencil from PNG images without Visio, also as a Docker image. Inactive.
 
 ## Diagram-as-code to Visio
 
-Visio has no native text syntax. These are the practical routes from code to `.vsdx`.
+Visio has no native text syntax. These are the practical routes between code and `.vsdx`.
 
-- [Mermaid](https://mermaid.js.org/) - Popular Markdown-like diagram syntax. Common route to Visio: Mermaid → draw.io ([insert Mermaid](https://www.drawio.com/docs/manual/mermaid/)) → export VSDX, or a direct converter below.
-- [PlantUML](https://plantuml.com/) - Text-based UML and more. draw.io can [insert PlantUML](https://www.drawio.com/docs/manual/insert/insert_plantuml/) and then export to VSDX.
-- [Graphviz](https://graphviz.org/) - The classic graph layout engine (DOT language). Export SVG, then import it into Visio or draw.io. ([output formats](https://graphviz.org/docs/outputs/))
-- [md2visio](https://github.com/Megre/md2visio) - Converts Mermaid in Markdown into `.vsdx`.
-- [mermaid-to-visio](https://github.com/FBklyra/mermaid-to-visio) - Converts rendered Mermaid into native `.vsdx` shapes and connectors, client-side. Includes a library, CLI and web editor.
-- [draw.io: diagrams from code](https://www.drawio.com/docs/tutorials/diagrams-from-code/) - Overview of draw.io's Mermaid, PlantUML and CSV import options.
-- [D2](https://d2lang.com/) - Modern diagram scripting language. Export SVG for use in Visio-based workflows.
-- [Diagrams](https://diagrams.mingrammer.com/) - Python "diagram as code" for cloud architecture. Renders images, which you can recreate in Visio.
-- [Kroki](https://kroki.io/) - One HTTP API that renders many text diagram languages (Mermaid, PlantUML, Graphviz, D2…) to SVG/PNG. ([source](https://github.com/yuzutech/kroki))
+- [md2visio](https://github.com/Megre/md2visio) - Convert Mermaid in Markdown into `.vsdx`.
+- [mermaid-to-visio](https://github.com/FBklyra/mermaid-to-visio) - Convert rendered Mermaid into native `.vsdx` shapes and connectors client-side, with a library, CLI and web editor.
+- [convert2mermaid](https://github.com/jgreywolf/convert2mermaid) - CLI and npm package that converts `.vsdx`, draw.io, Excalidraw and PlantUML diagrams into Mermaid.
+- [draw.io diagrams from code](https://www.drawio.com/docs/tutorials/diagrams-from-code/) - Overview of draw.io's Mermaid, PlantUML and CSV import, after which you can export VSDX.
+- [Mermaid](https://mermaid.js.org/) - Popular Markdown-like diagram syntax, usually taken to Visio through draw.io or a converter above.
+- [PlantUML](https://plantuml.com/) - Text-based UML that draw.io can insert and then export to VSDX.
+- [Graphviz](https://graphviz.org/) - Classic graph layout engine (DOT language) whose SVG output can be imported into Visio.
+- [D2](https://d2lang.com/) - Modern diagram scripting language with SVG export.
+- [Diagrams](https://diagrams.mingrammer.com/) - Python diagram-as-code for cloud architecture that renders images.
+- [Kroki](https://kroki.io/) - HTTP API that renders Mermaid, PlantUML, Graphviz, D2 and more to SVG or PNG. ([source](https://github.com/yuzutech/kroki))
 
-## AI tools for diagrams
+## AI tools that output Visio
 
-- [Visiomaster](https://github.com/Rss3208/Visiomaster) - Windows toolkit and Codex skill that rebuilds flowcharts and paper figures from images as editable `.vsdx` through Visio COM (Chinese docs).
-- [visio-com-skill](https://github.com/WUXU-Tech/visio-com-skill) - Codex skill that generates editable `.vsdx` diagrams through local Visio COM automation on Windows.
-- [MisterDiagram](https://github.com/MisterDiagram/MisterDiagram) - MCP server that drafts `.vsdx` files from plain-English prompts without Visio (also listed under libraries).
-- [Eraser DiagramGPT](https://www.eraser.io/diagramgpt) - Generates technical diagrams from natural language or code. 💲
-- [Mermaid Chart](https://www.mermaidchart.com/) - Commercial Mermaid editor from the Mermaid team, with AI-assisted diagramming. 💲
-- [Napkin AI](https://www.napkin.ai/) - Turns text into visuals and simple diagrams. 💲
-- [Excalidraw](https://excalidraw.com/) - Open-source hand-drawn-style whiteboard with text-to-diagram features. ([source](https://github.com/excalidraw/excalidraw))
+- [VSDX.ai](https://vsdx.ai?utm_source=awesome-visio) - ⭐ AI Visio generator from text, documents, data, diagram code or images that exports native `.vsdx` with glued connectors. REST API and remote MCP server at `https://vsdx.ai/api/mcp`. 💲
+- [LayerBack](https://layerback.com?utm_source=awesome-visio) - ⭐ Rebuilds a picture or PDF of a diagram as editable VSDX, PPTX, draw.io or SVG, with an API and an [MCP server](https://github.com/TopLocalAI/layerback-mcp). 💲
+- [Visiomaster](https://github.com/Rss3208/Visiomaster) - Codex toolkit that rebuilds flowcharts and paper figures from images as editable `.vsdx`. Needs Windows and Visio (Chinese docs).
+- [codex-visio-paper-figure-skill](https://github.com/pengjunchi0/codex-visio-paper-figure-skill) - Codex skill that rebuilds research paper figures from images as native Visio shapes through COM. Needs Visio (Chinese docs).
+- [visio-com-skill](https://github.com/WUXU-Tech/visio-com-skill) - Codex skill that generates editable `.vsdx` through local Visio COM automation. Needs Windows and Visio.
+- [Visio Scientific Figures](https://github.com/ywq177995212697-droid/visio-scientific-figures) - Agent skill that renders research figures from YAML specs as `.vsdx` with layout quality checks. Needs Visio.
+- [VSDX Trace](https://github.com/ZJUZhiyuCai/vsdx-trace) - Agent skill and Python toolchain that traces screenshots and scientific figures into editable `.vsdx`.
+- [CVPR-Figure](https://github.com/ChizkiyahuOhayon/CVPR-Figure) - Generates AI conference paper figures from a spec or model code, editable in Visio and PowerPoint.
 
-## Blogs, tutorials and community
+## Add-ins and developer tools
 
+- [SvgPublish](https://unmanagedvisio.com/products/svg-publish/) - Visio add-in that publishes diagrams as interactive HTML/SVG pages. 💲 ([releases](https://github.com/nbelyh/svgpublish-releases))
+- [Extended Visio Addin Project](https://github.com/nbelyh/VisioPanelAddinVSTO) - Visual Studio template for VSTO or COM Visio add-ins with a task pane, ribbon and installer.
+- [visiowings](https://github.com/twobeass/visiowings) - Edit Visio VBA modules in VS Code with live sync.
+- [VisioImportExportVba](https://github.com/nbelyh/VisioImportExportVba) - Import and export Visio VBA code for version control. Inactive.
+- [ShapeSheetWatch](https://github.com/nbelyh/ShapeSheetWatch) - ShapeSheet watch window with extra features for shape developers. Inactive.
+
+## Integrations
+
+- [FlowToVisio](https://github.com/LinkeD365/FlowToVisio) - XrmToolBox tool that documents Power Automate cloud flows and Logic Apps as Visio diagrams.
+- [StartLeft](https://github.com/iriusrisk/startleft) - Generates Open Threat Model files from sources including Visio diagrams.
+
+## Books, blogs and community
+
+- [Visualize Complex Processes with Microsoft Visio](https://www.packtpub.com/product/visualize-complex-processes-with-microsoft-visio/9781837631926) - Book by David Parker and Senaj Lelic on process diagrams and BPMN in Visio (Packt, 2023). 💲
 - [bVisual](https://bvisual.net/) - Blog by David Parker, a long-time Visio MVP, with deep dives on ShapeSheet, data linking and the file format.
 - [Visio Guy](https://www.visguy.com/) - Classic Visio tips, free shapes and ShapeSheet techniques.
-- [VisGuy forum](https://visguy.com/vgforum/) - Active community forum for Visio development and ShapeSheet questions.
+- [VisGuy forum](https://visguy.com/vgforum/) - Active forum for Visio development and ShapeSheet questions.
+- [Unmanaged Visio](https://unmanagedvisio.com/) - Nikolay Belyh's Visio add-ins, web tools and articles.
 - [Microsoft Visio blog](https://techcommunity.microsoft.com/category/microsoft-visio/blog/visioblog) - Official product announcements on Microsoft Tech Community.
-- [Open the ShapeSheet](https://learn.microsoft.com/en-us/office/client-developer/visio/open-the-shapesheet-for-a-shape-page-or-document) - Starting point for learning the ShapeSheet, the formula engine behind every Visio shape.
-- [visiowings](https://github.com/twobeass/visiowings) - Edit Visio VBA modules in VS Code with live sync.
-- [VisioImportExportVba](https://github.com/nbelyh/VisioImportExportVba) - Import and export Visio VBA code for version control.
+- [Stack Overflow visio tag](https://stackoverflow.com/questions/tagged/visio) - Programming questions about Visio automation and file formats.
+- [r/visio](https://www.reddit.com/r/visio/) - Reddit community for Visio users.
 
 ## Related lists
 
-- [awesome-visio (bhdicaire)](https://github.com/bhdicaire/awesome-visio) - An earlier community list of Visio resources, focused on shapes and stencils.
+- [awesome-visio by bhdicaire](https://github.com/bhdicaire/awesome-visio) - Earlier community list of Visio resources, focused on shapes and stencils.
 - [awesome-diagramming](https://github.com/shubhamgrg04/awesome-diagramming) - Tools for software diagramming in general.
-- [awesome](https://github.com/sindresorhus/awesome) - The list of awesome lists.
 
 ## Contributing
 
-Contributions are welcome. Read the [contribution guidelines](CONTRIBUTING.md) first.
+Contributions are welcome. Read the [contribution guidelines](CONTRIBUTING.md) first. This list is released under [CC0](LICENSE).
 
----
-
-## License
-
-[![CC0](https://licensebuttons.net/p/zero/1.0/88x31.png)](https://creativecommons.org/publicdomain/zero/1.0/)
-
-To the extent possible under law, the contributors have waived all copyright and related rights to this list. See [LICENSE](LICENSE).
-
-*Microsoft, Visio and Microsoft 365 are trademarks of the Microsoft group of companies. This list is not affiliated with, endorsed by or sponsored by Microsoft. VSDX.ai, LayerBack and vsdx.app are independent products and are not made by Microsoft. All other product names are trademarks of their respective owners.*
+*Microsoft, Visio and Microsoft 365 are trademarks of the Microsoft group of companies. This list is not affiliated with, endorsed by or sponsored by Microsoft. All other product names are trademarks of their respective owners.*
