@@ -100,6 +100,7 @@ Legend: 💲 paid or commercial (may have a free tier) · ⭐ made by the mainta
 ### JavaScript and TypeScript
 
 - [ooxml](https://github.com/ChristopherVR/ooxml) - Local-first OOXML engine with Visio document APIs and drop-in viewers for React, Vue, Angular, Svelte, Solid and vanilla JS.
+- [vsdx-kit](https://github.com/TopLocalAI/vsdx-kit) - ⭐ Generate native `.vsdx` with glued connectors from JSON or draw.io files without Visio or a browser, with auto-layout, a CLI and a local MCP server.
 - [ts-visio](https://github.com/zimmermanw84/ts-visio) - Create `.vsdx` files from TypeScript.
 - [vsdx-js](https://github.com/jgreywolf/vsdx-js) - Parse a `.vsdx` file into a JavaScript object.
 - [cytoscape-vsdx](https://github.com/ShanteshSindgi/cytoscape-vsdx) - Export Cytoscape.js graphs with nodes, edges, groups and styles to `.vsdx` in the browser.

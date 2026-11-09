@@ -100,6 +100,7 @@ Microsoft Visio 是业务和技术图表领域用了很多年的标准工具，�
 ### JavaScript 与 TypeScript
 
 - [ooxml](https://github.com/ChristopherVR/ooxml) - 本地优先的 OOXML 引擎，提供 Visio 文档 API，以及 React、Vue、Angular、Svelte、Solid 和原生 JS 的现成查看器组件。
+- [vsdx-kit](https://github.com/TopLocalAI/vsdx-kit) - ⭐ 不用 Visio、也不用浏览器，从 JSON 或 draw.io 文件生成连线已吸附的原生 `.vsdx`，自带自动排版、命令行和本地 MCP 服务。
 - [ts-visio](https://github.com/zimmermanw84/ts-visio) - 用 TypeScript 生成 `.vsdx` 文件。
 - [vsdx-js](https://github.com/jgreywolf/vsdx-js) - 把 `.vsdx` 文件解析成 JavaScript 对象。
 - [cytoscape-vsdx](https://github.com/ShanteshSindgi/cytoscape-vsdx) - 在浏览器里把 Cytoscape.js 图（节点、边、分组、样式）导出为 `.vsdx`。
