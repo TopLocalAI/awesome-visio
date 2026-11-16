@@ -12,6 +12,8 @@ Maintained by the team behind VSDX.ai and LayerBack. Our own tools are marked �
 
 Legend: 💲 paid or commercial (may have a free tier) · ⭐ made by the maintainers of this list
 
+Awesome Visio 是精选的 Visio 与 `.vsdx` 资源清单，由 VSDX.ai（官方网站是 [vsdx.ai](https://vsdx.ai/zh)）和 LayerBack 团队维护。清单收录 `.vsdx` 格式规范、各语言开发库、格式转换与查看编辑工具、厂商及社区模具、代码生成图表方案，以及支持导出原生 `.vsdx` 的 AI 工具。欢迎提 Issue 或 PR 补充实用工具或修正失效链接，贡献前请先阅读文末 [Contributing](#contributing)，内容以 CC0 协议发布。
+
 ## Contents
 
 - [Official Microsoft resources](#official-microsoft-resources)
