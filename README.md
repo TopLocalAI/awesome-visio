@@ -2,7 +2,7 @@
 
 > A curated list of Microsoft Visio and `.vsdx` resources: file format specs, libraries, converters, viewers, stencils, diagram-as-code routes and AI tools.
 
-**English** | [简体中文](README.zh-CN.md)
+**English** | [简体中文](README.zh-CN.md) | [日本語](./README.ja.md)
 
 Microsoft Visio is the long-standing standard for business and technical diagrams: flowcharts, swimlanes, network and architecture diagrams, org charts and floor plans. Since Visio 2013 the default file format is **`.vsdx`**, an Open Packaging Conventions ZIP archive of XML parts (pages, masters, ShapeSheet cells, themes). Related extensions are `.vssx` (stencil), `.vstx` (template) and the macro-enabled `.vsdm`. Older versions used the binary **`.vsd`** format and the Visio 2003–2010 XML format **`.vdx`**.
 

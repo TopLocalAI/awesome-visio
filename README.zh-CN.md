@@ -2,7 +2,7 @@
 
 > 精选的 Microsoft Visio 与 `.vsdx` 资源清单：文件格式规范、开发库、格式转换、查看与编辑工具、模具（Stencil）、代码生成图表，以及 AI 绘图工具。
 
-[English](README.md) | **简体中文**
+[English](README.md) | **简体中文** | [日本語](./README.ja.md)
 
 Microsoft Visio 是业务和技术图表领域用了很多年的标准工具，常用来画流程图、泳道图、网络拓扑、架构图、组织架构图和平面图。从 Visio 2013 开始，默认文件格式是 **`.vsdx`**。它本质上是一个遵循 Open Packaging Conventions 的 ZIP 压缩包，里面是一组 XML 文件，分别记录页面、母版、ShapeSheet 单元格和主题。相关扩展名还有 `.vssx`（模具）、`.vstx`（模板）和带宏的 `.vsdm`。更早的版本用二进制格式 **`.vsd`**，Visio 2003–2010 还有一种 XML 格式 **`.vdx`**。
 
